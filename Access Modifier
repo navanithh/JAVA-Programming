@@ -1,0 +1,17 @@
+public class Hello {
+   
+  public static void main(String[] args){
+    A ob=new A();  
+    //System.out.println("private....."+ob.b);
+    System.out.println("....."+ob.s);
+    System.out.println("protected"+ob.i);
+    System.out.println("public..."+ob.l);
+  }
+}
+class A
+{
+  private byte b=5;
+  short s=222;
+  protected  int i=22211;
+  public long l = 9999999999L;
+}
