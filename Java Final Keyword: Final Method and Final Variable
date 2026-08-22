@@ -1,0 +1,23 @@
+class A
+{
+    final void disp()
+    {
+        System.out.println("A class Disp method");
+    }
+}
+public class FDemo extends A {
+    final double PI;
+    FDemo()
+    {
+        
+        PI=3.14;
+    }
+    void disp()
+    {
+        //PI=555.44;
+        System.out.println("pi value="+PI);
+    }
+    public static void main(String[] args){
+     FDemo ob=new FDemo();
+}
+}
