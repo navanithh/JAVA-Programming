@@ -1,0 +1,16 @@
+public class Employee
+{
+    static int eno=22;
+    static String ename ="kaalia";
+    Employee(){
+         
+        System.out.println("default constructor....");
+    }
+    static void display()
+    {
+        System.out.println(eno+" "+ename);
+    }
+    public static void main(String args[]){
+        Employee.display();
+    }
+}  
