@@ -1,0 +1,32 @@
+class MyException extends Exception
+ {
+     public MyException()
+     {
+         System.out.println("MyException");
+     }
+     public MyException(String s)
+     {
+         System.out.println("MyException +s");
+     }
+ }
+ public class ThrowTest
+ {
+     public void disp(int x)throws MyException
+     {
+        if(x<0)
+        {
+             System.out.println("inside the if block");
+             throw new MyException("U should not pass negative numberS");
+        }
+         else 
+        {
+         System.out.println("value is "+x);
+        }
+    }//method
+    public static void main(String[] args)throws Exception
+    {
+    ThrowTest td=new ThrowTest();
+    td.disp(-5);
+    System.out.println("end of p rg");
+    }
+}
