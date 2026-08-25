@@ -1,0 +1,22 @@
+public class PriorityTest extends Thread{
+    public void run()
+    {
+        for(int i=1;i<6;i++)
+        {
+            System.out.println(Thread.currentThread().getName()+"  "+i);
+        }
+    }
+    public static void main(String args[])
+    {
+        PriorityTest rp1 = new PriorityTest();
+        rp1.setPriority(MAX_PRIORITY);
+        rp1.setName("First THread");
+        
+        PriorityTest rp2=new PriorityTest();
+        rp2.setPriority(MIN_PRIORITY);
+        rp2.setName("Second THread");
+        rp2.start();
+        rp1.start();
+        
+    }
+}
