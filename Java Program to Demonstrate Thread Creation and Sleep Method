@@ -1,0 +1,30 @@
+class mythread extends Thread
+{
+    public void run()
+    {
+        for(int i = 0; i < 9; ++i)
+        {
+            if(i == 5)
+            {
+                try
+                {
+                    Thread.sleep(5000); // wait for 5 seconds
+                }
+                catch(Exception e)
+                {
+                    System.out.println(e.toString());
+                }
+            }
+
+            System.out.println(i + 1);
+        }
+    }
+
+    public static void main(String[] arg)
+    {
+        mythread mt = new mythread(); // thread object created
+        System.out.println("Before starting thread");
+
+        mt.start(); // starts the thread
+    }
+}
