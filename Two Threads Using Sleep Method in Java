@@ -1,0 +1,41 @@
+public class TwoThread extends Thread
+{
+    public void run()
+    {
+        try
+        {
+            String name = Thread.currentThread().getName();
+            if(name.equals("First"))
+            {
+                for(int i=1;i<20;++i)
+                {
+                    if (i==5)
+                    Thread.sleep(10);
+                    System.out.println(name+" value " +i);
+                }
+            }
+            else if(name.equals("Second"))
+            {
+                for(int i=20;i>=1;--i)
+                {
+                    if(i==15)
+                    Thread.sleep(10);
+                    System.out.println(name+"value"+i);
+                }
+            }
+        }
+        catch(InterruptedException ie)
+        {
+            ie.printStackTrace();
+        }
+    }
+    public static void main(String[] args)
+    {
+        TwoThread th1=new TwoThread();
+        th1.setName("First");
+        TwoThread th2=new TwoThread();
+        th2.setName("second");
+        th1.start();
+        th2.start();
+    } 
+}
