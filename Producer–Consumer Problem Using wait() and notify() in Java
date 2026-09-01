@@ -1,0 +1,68 @@
+class Q
+{
+    int n;
+    boolean valueset = false;
+    synchronized int get()
+    {
+        while(!valueset)
+        {
+            try{
+                wait();
+            }catch (InterruptedException e)
+            {
+                System.out.println("Interrupted Exception caught");
+            }
+        }//while loop ending*/
+        System.out.println("Got : "+n);
+        valueset = false;
+        notify();
+        return(n);
+    }
+    synchronized void put(int n)
+    {
+        while(valueset)
+        {
+            try
+            {
+                wait();
+            }catch (InterruptedException e)
+            {
+                System.out.println("Interrupted Exception caught");
+            }
+        }
+        this.n=n;
+        valueset = true;
+        System.out.println("Put : "+n);
+        notify();
+    }
+}
+public class Pc2 extends Thread
+{
+    Q q;
+    Pc2(String name,Q q)
+    {
+        super(name);
+        this.q=q;
+        start();
+    }
+    public void run()
+    {
+        int i=0;
+        if(Thread.currentThread().getName().equals("consumer"))
+        {
+            while(true)
+            q.get();
+        }
+        else
+        {
+            while(true)
+            q.put(++i);
+        }
+    }
+    public static void main(String ar[])
+    {
+        Q q=new Q();
+        Pc2 p=new Pc2("producer",q);
+        Pc2 c=new Pc2("consumer",q);
+    }
+}
