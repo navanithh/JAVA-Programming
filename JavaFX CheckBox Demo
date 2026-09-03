@@ -1,0 +1,42 @@
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import javafx.stage.Stage;
+
+public class Main extends Application {
+
+    @Override
+    public void start(Stage stage) {
+
+        CheckBox java = new CheckBox("Java");
+        CheckBox python = new CheckBox("Python");
+
+        Button checkButton = new Button("Check selections");
+        Label result = new Label();
+
+        checkButton.setOnAction(e -> {
+            StringBuilder sb = new StringBuilder("Selected: ");
+
+            if (java.isSelected())
+                sb.append("Java ");
+
+            if (python.isSelected())
+                sb.append("Python");
+
+            result.setText(sb.toString());
+        });
+
+        VBox root = new VBox(10, java, python, checkButton, result);
+        root.setPadding(new Insets(15));
+
+        stage.setScene(new Scene(root, 400, 300));
+        stage.setTitle("CheckBox Demo");
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
